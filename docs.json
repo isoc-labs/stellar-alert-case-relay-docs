@@ -69,14 +69,14 @@
     "links": [
       {
         "label": "GitHub",
-        "href": "https://github.com/xdr-labs/stellar-alert-case-relay-docs"
+        "href": "https://github.com/isoc-labs/stellar-alert-case-relay-docs"
       }
     ]
   },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg",
-    "href": "https://stellar-relay.xdr.ooo"
+    "href": "https://stellar-relay.isoc.ooo"
   },
   "favicon": "/favicon.svg",
   "appearance": {

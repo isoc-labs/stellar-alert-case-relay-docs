@@ -6,9 +6,9 @@ The relay fetches Stellar Cyber alerts and cases and forwards them as newline-de
 
 ## Documentation site
 
-- **Site:** https://stellar-relay.xdr.ooo
+- **Site:** https://stellar-relay.isoc.ooo
 - **Languages:** English / 한국어
-- **Runtime source:** https://github.com/xdr-labs/Stellar-Case-Alert-to-Sylog
+- **Runtime source:** https://github.com/isoc-labs/stellar-relay
 
 ## Runtime
 
