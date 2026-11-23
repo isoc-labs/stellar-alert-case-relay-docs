@@ -68,7 +68,11 @@
   "navbar": {
     "links": [
       {
-        "label": "GitHub",
+        "type": "github",
+        "href": "https://github.com/isoc-labs/stellar-relay"
+      },
+      {
+        "label": "Docs Source",
         "href": "https://github.com/isoc-labs/stellar-alert-case-relay-docs"
       }
     ]
