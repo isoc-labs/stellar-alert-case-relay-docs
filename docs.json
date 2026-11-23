@@ -76,7 +76,7 @@
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg",
-    "href": "https://stellar-relay.xdr.ooo"
+    "href": "https://stellar-relay.isoc.ooo"
   },
   "favicon": "/favicon.svg",
   "appearance": {
@@ -89,7 +89,8 @@
   "seo": {
     "metatags": {
       "robots": "index, follow",
-      "description": "Stellar Alert & Case Relay forwards Stellar Cyber alerts and cases into existing SIEM and SOC workflows over TCP/NDJSON."
+      "description": "Stellar Alert & Case Relay forwards Stellar Cyber alerts and cases into existing SIEM and SOC workflows over TCP/NDJSON.",
+      "canonical": "https://stellar-relay.isoc.ooo"
     }
   },
   "icons": {
