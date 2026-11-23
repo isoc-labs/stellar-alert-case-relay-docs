@@ -1,0 +1,101 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Stellar Alert & Case Relay",
+  "description": "Forward Stellar Cyber alerts and cases into existing SIEM and SOC workflows over TCP/NDJSON.",
+  "colors": {
+    "primary": "#1F59E0",
+    "light": "#2982E8",
+    "dark": "#5B8CFF"
+  },
+  "navigation": {
+    "languages": [
+      {
+        "language": "en",
+        "default": true,
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "index"
+            ]
+          },
+          {
+            "group": "Get started",
+            "pages": [
+              "quickstart",
+              "configuration"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "operations",
+              "output-format",
+              "troubleshooting"
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ko",
+        "groups": [
+          {
+            "group": "개요",
+            "pages": [
+              "ko/index"
+            ]
+          },
+          {
+            "group": "시작하기",
+            "pages": [
+              "ko/quickstart",
+              "ko/configuration"
+            ]
+          },
+          {
+            "group": "운영",
+            "pages": [
+              "ko/operations",
+              "ko/output-format",
+              "ko/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/xdr-labs/stellar-alert-case-relay-docs"
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://stellar-relay.xdr.ooo"
+  },
+  "favicon": "/favicon.svg",
+  "appearance": {
+    "default": "system",
+    "strict": false
+  },
+  "background": {
+    "decoration": "gradient"
+  },
+  "seo": {
+    "metatags": {
+      "robots": "index, follow",
+      "description": "Stellar Alert & Case Relay forwards Stellar Cyber alerts and cases into existing SIEM and SOC workflows over TCP/NDJSON."
+    }
+  },
+  "icons": {
+    "library": "fontawesome"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  }
+}

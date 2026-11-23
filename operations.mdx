@@ -1,0 +1,69 @@
+---
+title: "Operations"
+description: "Operate the Stellar Relay systemd service and local runtime state."
+---
+
+# Operations
+
+## Service status
+
+```bash
+sudo systemctl status stellar-alert-case-syslog
+```
+
+## Follow logs
+
+```bash
+sudo journalctl -u stellar-alert-case-syslog -f
+```
+
+Recent logs only:
+
+```bash
+sudo journalctl -u stellar-alert-case-syslog -n 100 --no-pager
+```
+
+## Restart
+
+```bash
+sudo systemctl restart stellar-alert-case-syslog
+```
+
+## Reconfigure
+
+Run the wizard again:
+
+```bash
+python3 Stellar_Alert_Case_Syslog.py --setup
+```
+
+Review the summary before applying the new service configuration.
+
+## Installed files
+
+The wizard uses:
+
+```text
+/usr/local/lib/stellar-alert-case/Stellar_Alert_Case_Syslog.py
+/etc/default/stellar-alert-case-syslog
+/etc/systemd/system/stellar-alert-case-syslog.service
+```
+
+The token environment file is root-only. The service uses automatic restart and a restrictive umask.
+
+## Runtime state
+
+By default:
+
+```text
+~/.local/state/stellar_alert_case/
+├── queue.db
+├── logs/
+└── stellar_alert_case.lock
+```
+
+Do not run multiple instances against the same state directory.
+
+## Backfill
+
+`--backfill DAYS` intentionally re-fetches historical data and can resend records. Use it only for controlled testing or recovery.

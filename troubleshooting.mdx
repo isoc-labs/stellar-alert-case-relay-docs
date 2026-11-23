@@ -1,0 +1,73 @@
+---
+title: "Troubleshooting"
+description: "Symptom-based checks for Stellar Relay."
+---
+
+# Troubleshooting
+
+## Service does not start
+
+```bash
+sudo systemctl status stellar-alert-case-syslog
+sudo journalctl -u stellar-alert-case-syslog -n 100 --no-pager
+```
+
+Re-run the wizard if the configuration is wrong:
+
+```bash
+python3 Stellar_Alert_Case_Syslog.py --setup
+```
+
+## API authentication fails
+
+Check:
+
+- Stellar host and user ID
+- All-Access API token validity
+- outbound HTTPS connectivity
+- systemd token file if running as a service
+
+The wizard/service uses `STELLAR_TOKEN`; do not hard-code tokens into the script.
+
+## No Alert or Case data
+
+Confirm the intended stream is enabled with all three required values:
+
+```text
+interval
+destination IP
+destination port
+```
+
+Also check the first-run lookback and current Stellar data availability.
+
+## Receiver gets no data
+
+Check TCP reachability:
+
+```bash
+nc -vz <DESTINATION_IP> <PORT>
+```
+
+Then confirm the receiver expects **NDJSON over TCP**, not RFC syslog framing.
+
+If the receiver is down, records remain pending in the local SQLite queue and are retried.
+
+## Another instance is already running
+
+Only one process should use the same lock/state path.
+
+Check for an existing service/process before deleting any lock file:
+
+```bash
+sudo systemctl status stellar-alert-case-syslog
+ps -ef | grep Stellar_Alert_Case_Syslog.py
+```
+
+## JSON parsing fails
+
+The receiver must parse one JSON object per LF-terminated line. Do not treat the stream as RFC 5424 text.
+
+## Backfill creates duplicates
+
+This is expected behavior. `--backfill DAYS` ignores normal checkpoints and can resend historical records.

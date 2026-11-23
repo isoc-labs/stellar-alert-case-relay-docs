@@ -1,0 +1,35 @@
+---
+title: "Output Format"
+description: "Receiver requirements for Stellar Relay NDJSON over TCP."
+---
+
+# Output Format
+
+Stellar Relay sends **NDJSON over a raw TCP connection**.
+
+Each record is:
+
+- one UTF-8 JSON object
+- terminated by LF (`\n`)
+- sent as one logical line
+
+Example framing:
+
+```text
+{"stellar_record_type":"alert",...}\n
+{"stellar_record_type":"case",...}\n
+```
+
+The receiver must preserve line boundaries and parse each line as an independent JSON object.
+
+> The historical CLI names `--alert-syslog-*` and `--case-syslog-*` do not mean the payload is RFC 5424 syslog.
+
+Alert and Case can use separate destinations or the same destination. When sharing a destination, distinguish record types using JSON fields such as `stellar_record_type`.
+
+## Receiver checklist
+
+- TCP listener is reachable from the relay host
+- listener accepts newline-delimited UTF-8 data
+- parser treats each line as JSON
+- firewall allows the configured destination port
+- receiver capacity is sufficient for retry/backfill bursts

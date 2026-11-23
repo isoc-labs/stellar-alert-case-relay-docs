@@ -1,0 +1,35 @@
+---
+title: "Output Format"
+description: "Stellar Relay의 NDJSON over TCP 수신기 요구사항을 설명합니다."
+---
+
+# Output Format
+
+Stellar Relay는 **TCP 연결을 통해 NDJSON**을 전송합니다.
+
+각 Record는:
+
+- UTF-8 JSON object 하나
+- LF(`\n`)로 종료
+- 한 줄 단위 전송
+
+예:
+
+```text
+{"stellar_record_type":"alert",...}\n
+{"stellar_record_type":"case",...}\n
+```
+
+수신기는 줄 경계를 유지하고 각 줄을 독립된 JSON 객체로 처리해야 합니다.
+
+> 기존 CLI 옵션의 `--alert-syslog-*`, `--case-syslog-*` 명칭과 달리 전송 데이터는 RFC 5424 Syslog가 아닙니다.
+
+Alert와 Case는 서로 다른 목적지을 사용할 수도 있고 같은 목적지을 공유할 수도 있습니다. 같은 목적지에서는 `stellar_record_type` 같은 JSON 필드로 구분합니다.
+
+## Receiver Checklist
+
+- Relay 호스트에서 TCP 수신 포트에 연결할 수 있어야 함
+- Newline-delimited UTF-8 수신
+- 각 Line을 JSON으로 parse
+- Configured Port 방화벽 허용
+- 재시도/백필 시 몰리는 데이터를 처리할 충분한 수신기 용량
